@@ -5,15 +5,15 @@ remover filmes
 ver quantidade de filmes laugados
 ver total do dinheiro ganho no dia
 """
-# Catalogo de filmes, para cada genero existe uma lista com os nomes dos filmes
+
+films_alugados = 0      #Quantidades de filmes no estado: "alugados"
+val_alugados = 0        #Somatoria do valor de cada filme "alugado" no dia
 catalg_films = {"1":["Back to the Future I","Goonies","Senhor dos aneis"],
                 "2":["Terminator II", "James Bond:NO TIME TO DIE","Missão Impossível III"],
                 "3":["Escola de Rock", "Free Guy"],
                 "4":[],
                 "5":[]
                    }
-films_alugados = 0      #Quantidades de filmes no estado: "alugados"
-val_alugados = 0        #Somatoria do valor de cada filme "alugado" no dia
 generos = [
         "1. Aventura",
         "2. Ação",
@@ -40,8 +40,11 @@ def show_generos():
 #Mostra filmes do genero selecionado
 def filmes_in_genero(genero):
     print("\nFilmes do genero:")
+    contador = 0
     for filme in catalg_films[genero]:
-        print(filme)
+        contador += 1
+        print(f"{contador} - {filme}")
+    return get_int_option(1, len(catalg_films[genero]), "Digite o codigo do filme a selecionar: ")
 
 
 # Verifica que a escolha da opçao inserida esteja dentro das fornecidas no menu
@@ -69,11 +72,10 @@ def add_film():
 
 # Deletar filme
 def del_film():
-    print("Adicionar filme - selecionado\n")
+    print("Deletar filme - selecionado\n")
     genero = show_generos()
-    filmes_in_genero(genero)
-    adicionar = input("Escreva o nome do filme a adicionar: ")
-    catalg_films[genero].append(adicionar)
+    deletar = filmes_in_genero(genero)
+    catalg_films[genero].pop(deletar)
     print("Filme adicionado com sucesso :)\n")
 
 
