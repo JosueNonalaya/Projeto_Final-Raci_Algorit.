@@ -78,8 +78,15 @@ def del_film():
     catalg_films[genero].pop(deletar)
     print("Filme adicionado com sucesso :)\n")
 
+# Mostrar filmes alugados
+def mostrar_alugados():
+    print(films_alugados)
 
 
+#Mostrar soma dos valores alugados no dia 
+def valor_do_dia():
+    print(val_alugados)
+    
 # Função principal
 def main(option):
     while True:
@@ -89,9 +96,9 @@ def main(option):
         elif op == 2:
             del_film()
         elif op == 3:
-            pass
+            mostrar_alugados()
         elif op == 4:
-            pass
+            mostrar_alugados()
         else:
             break
 
